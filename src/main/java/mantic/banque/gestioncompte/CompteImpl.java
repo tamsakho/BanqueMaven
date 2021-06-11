@@ -23,6 +23,11 @@ public class CompteImpl implements Compte{
 		this.decouvert = decouvert;
 	}
 	
+	/**
+	 * Constructeur
+	 * @param decouvert : montant initial du découvert autorisé
+	 * @param titulaire : Personne titulaire du compte
+	 */
 	public CompteImpl(double decouvert, Personne titulaire) {
 		this(decouvert);
 		this.titulaire = titulaire;
@@ -44,6 +49,11 @@ public class CompteImpl implements Compte{
 		return (getSolde() - montant >= -getDecouvert());
 	}
 	
+	/**
+	 * Crédite le compte avec un montant donné
+	 * @param montant : somme à <b>créditer</b>
+	 * @exception IllegalArgumentException si montant &lt;=0
+	 */
 	public void crediter(double montant){
 		if(montant > 0){
 			credits.add(montant);

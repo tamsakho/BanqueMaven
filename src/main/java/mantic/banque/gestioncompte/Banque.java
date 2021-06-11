@@ -4,7 +4,11 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * 
+ * @author admin
+ *
+ */
 public class Banque {
     private static Map<String,Compte> lesComptes; 
     private Requete requete;
@@ -17,18 +21,21 @@ public class Banque {
 	  }; 
 	
 	public double getSolde(String numero){
-		Compte compte = lesComptes.get(numero);
+		Compte compte = lesComptes.get(numero); 
 		return compte.getSolde();
 	}
 	
 	public void ajouterCompte(String numero, Personne titulaire) {		
-		this.lesComptes.put(numero, new CompteImpl(titulaire));
+		Banque.lesComptes.put(numero, new CompteImpl(titulaire));
 		
 	}
 	
+	/**
+	 * Donne l'ensemble des personnes enregistrées en base
+	 * @return ResultSet contenant les lignes retrouvées
+	 */
 	public ResultSet getPersonnesFromDB() {
-		ResultSet rs = requete.executer("SELECT * FROM personnes");		
-		return rs;
+		return requete.executer("SELECT * FROM personnes");		
 	}
   
 	public Requete getRequete() {
