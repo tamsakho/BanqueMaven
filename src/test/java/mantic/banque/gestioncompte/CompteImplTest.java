@@ -18,7 +18,6 @@ public class CompteImplTest {
 	public void testCrediter() {
 		compte.crediter(50);
 		compte.crediter(60);
-		assertThat(compte.getSolde()).isEqualTo(110.0);
 	    assertTrue(110.0 == compte.getSolde());
 	}
 
